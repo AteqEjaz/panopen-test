@@ -1,0 +1,29 @@
+<h3 style="text-align: center; margin-top: 5%"> PanOpen Course List</h3>
+
+<% if @courses.any? %>
+<table class="table" style="width: 80%; margin-left: auto;margin-right: auto; margin-top: 10%">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Course Name</th>
+    <th scope="col">Book Name</th>
+    <th scope="col">Instructor Name</th>
+    <th scope="col">Students</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @courses.each_with_index do | course, index| %>
+  <tr>
+    <th scope="row"><%= index+1  %></th>
+    <td><%= course.name %></td>
+    <td><%= course.book.name %></td>
+    <td><%= course_instructor(course.instructor_id)  %></td>
+    <td><%=link_to "See Students", panopen_courses_list_course_students_path(id: course.id)  %></td>
+  </tr>
+  <% end %>
+
+  </tbody>
+</table>
+<% else %>
+  <h1> No course Found inside the Database</h1>
+<% end %>

@@ -1,0 +1,20 @@
+<div style="align-content: center; text-align: center;margin-top: 5%">
+  <h1>Update User name </h1>
+  <%= form_tag panopen_courses_update_user_name_path, method: "post" do %>
+    <p style="margin-top: 5%">
+      <label>Enter user email:</label>
+      <%= text_field_tag "user_email" %>
+    </p>
+
+    <p>
+      <label>Enter User Name:</label>
+      <%= text_field_tag "user_name" %>
+    </p>
+
+    <p style="text-align: center; margin-top: 2%">
+      <%= submit_tag "Save settings" %>
+    </p>
+
+  <% end %>
+
+</div>

@@ -1,0 +1,2 @@
+module PanopenCoursesHelper
+end

@@ -1,0 +1,32 @@
+<h3 style="text-align: center; margin-top: 5%"> PanOpen Course Name >> </h3> <h3 style="text-align:center; color: deepskyblue"><%=@course.name %></h3>
+
+<% if @course.course_users.any? %>
+  <table class="table" style="width: 80%; margin-left: auto;margin-right: auto; margin-top: 10%">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Student Email</th>
+      <th scope="col">Course Book </th>
+      <th scope="col">Reading Time(in minutes)</th>
+      <th scope="col">Edit User</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @course.course_users.each_with_index do | course, index| %>
+      <tr>
+        <th scope="row"><%= index+1  %></th>
+        <td><%= user_name(course.user_id) %></td>
+        <td><%= user_email(course.user_id) %></td>
+        <td><%= course_book(course.course_id) %></td>
+        <td><%= user_course_reading(course) %>(Min)</td>
+        <td><%=link_to "Edit Student", panopen_courses_update_user_path(id: course.user_id)  %></td>
+
+      </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+<% else %>
+  <h1> No course Found inside the Database</h1>
+<% end %>
